@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Plasion</string>
+    <string name="login_button">Masuk</string>
+    <string name="register_button">Buat Akun</string>
 </resources>
