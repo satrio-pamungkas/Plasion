@@ -4,6 +4,104 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="@dimen/activity_horizontal_margin"
     tools:context=".activities.FinalRegisterActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="64dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/logo_plasion" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_extrabold"
+            android:layout_marginTop="42dp"
+            android:textSize="28sp"
+            android:textColor="@color/red_main"
+            android:text="Lengkapi identitas" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:fontFamily="@font/open_sans"
+            android:text="Untuk mempermudah komunikasi dan informasi antar pengguna lainnya"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/nama_lengkap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:ems="10"
+            android:textSize="18sp"
+            android:fontFamily="@font/open_sans"
+            android:backgroundTint="@color/red_main"
+            android:hint="Nama Lengkap" />
+
+        <EditText
+            android:id="@+id/nomor_telepon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:textSize="18sp"
+            android:fontFamily="@font/open_sans"
+            android:backgroundTint="@color/red_main"
+            android:hint="Nomor Telepon"
+            android:inputType="phone" />
+
+        <EditText
+            android:id="@+id/domisili"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:textSize="18sp"
+            android:fontFamily="@font/open_sans"
+            android:backgroundTint="@color/red_main"
+            android:hint="Domisili"
+            android:inputType="textPostalAddress" />
+
+        <Spinner
+            android:id="@+id/golongan_darah"
+            android:entries="@array/gol_darah_array"
+            android:spinnerMode="dialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:ems="10"
+            android:textSize="18sp"
+            android:fontFamily="@font/open_sans"
+            android:backgroundTint="@color/red_main"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/submit_register_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="54dp"
+            android:background="@drawable/rounded_corner"
+            android:fontFamily="@font/raleway_bold"
+            android:text="@string/register_button"
+            android:textColor="@color/white" />
+
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

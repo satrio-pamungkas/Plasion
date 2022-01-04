@@ -3,4 +3,12 @@
     <string name="login_button">Masuk</string>
     <string name="register_button">Buat Akun</string>
     <string name="next">Selanjutnya</string>
+    <string-array name="gol_darah_array">
+        <item>Pilih Golongan Darah</item>
+        <item>A</item>
+        <item>B</item>
+        <item>AB</item>
+        <item>O</item>
+        <item>Tidak Tahu</item>
+    </string-array>
 </resources>
