@@ -80,7 +80,8 @@
             android:background="@drawable/rounded_corner"
             android:fontFamily="@font/raleway_bold"
             android:text="@string/next"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:clickable="true"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,11 +14,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    AppCompatButton nextButton;
-    EditText inputEmail, inputPassword, inputRepeatPassword;
-
-    public static String USER_EMAIL;
-    public static String USER_PASSWORD;
+    private AppCompatButton nextButton;
+    private EditText inputEmail, inputPassword, inputRepeatPassword;
 
     private final View.OnClickListener nextOnClickListener = new View.OnClickListener() {
         @Override

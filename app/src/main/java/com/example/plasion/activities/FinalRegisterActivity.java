@@ -13,6 +13,8 @@ import android.widget.Toast;
 import com.example.plasion.R;
 import com.example.plasion.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,8 +31,7 @@ public class FinalRegisterActivity extends AppCompatActivity {
     private EditText inputFullName, inputPhone, inputLocation;
     private Spinner inputBlood;
     private FirebaseAuth mAuth;
-
-    private static final String DATABASE_URL = "https://plasion.com";
+    private String DATABASE_URL;
 
     DatabaseReference databaseUser;
 
@@ -46,6 +47,7 @@ public class FinalRegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_final_register);
 
+        DATABASE_URL = getResources().getString(R.string.database_url);
         mAuth = FirebaseAuth.getInstance();
         databaseUser = FirebaseDatabase.getInstance(DATABASE_URL).getReference("users");
 
@@ -69,17 +71,17 @@ public class FinalRegisterActivity extends AppCompatActivity {
         blood = inputBlood.getSelectedItem().toString();
 
         if (TextUtils.isEmpty(fullName)) {
-            inputFullName.setError("Alamat surel wajib diisi");
+            inputFullName.setError("Nama lengkap wajib diisi");
             return;
         }
 
         if (TextUtils.isEmpty(phoneNumber)) {
-            inputPhone.setError("Kata sandi wajib diisi");
+            inputPhone.setError("Nomor telepon wajib diisi");
             return;
         }
 
         if (TextUtils.isEmpty(location)) {
-            inputLocation.setError("Kata sandi wajib diisi");
+            inputLocation.setError("Domisili wajib diisi");
             return;
         }
 
@@ -88,40 +90,34 @@ public class FinalRegisterActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "Berhasil membuat akun basic", Toast.LENGTH_SHORT).show();
+                            FirebaseUser pengguna = task.getResult().getUser();
+                            setAdditionalInformation(pengguna);
                         } else {
-//                            Toast.makeText(FinalRegisterActivity.this, "Error"+ task.getException().getMessage(), Toast.LENGTH_LONG).show();
                             Toast.makeText(getApplicationContext(), "Gagal membuat akun", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
 
-        setAdditionalInformation();
     }
 
-    private void setAdditionalInformation() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            for (UserInfo profile : user.getProviderData()) {
-                userId = profile.getUid();
-            }
-        } else {
-            Toast.makeText(getApplicationContext(), "Akun null", Toast.LENGTH_SHORT).show();
-        }
+    private void setAdditionalInformation(FirebaseUser pengguna) {
+        userId = pengguna.getUid();
 
-        User pengguna = new User(userId, fullName, email, phoneNumber, location, blood);
-        databaseUser.child(userId).setValue(pengguna);
+        User penggunaBaru = new User(userId, fullName, email, phoneNumber, location, blood);
+        databaseUser.child(userId).setValue(penggunaBaru);
 
         UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                 .setDisplayName(fullName)
                 .build();
 
-        user.updateProfile(profileUpdates)
+        pengguna.updateProfile(profileUpdates)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(), "Berhasil membuat akun", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(intent);
                         } else {
                             Toast.makeText(FinalRegisterActivity.this, "Error"+ task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }

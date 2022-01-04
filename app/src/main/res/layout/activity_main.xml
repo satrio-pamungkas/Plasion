@@ -46,7 +46,8 @@
             android:background="@drawable/rounded_corner"
             android:fontFamily="@font/raleway_bold"
             android:text="@string/login_button"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:clickable="true"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/register_button"
@@ -56,7 +57,8 @@
             android:background="@drawable/rounded_corner_stroke"
             android:fontFamily="@font/raleway_bold"
             android:text="@string/register_button"
-            android:textColor="@color/red_main" />
+            android:textColor="@color/red_main"
+            android:clickable="true"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
