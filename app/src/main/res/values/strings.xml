@@ -3,6 +3,8 @@
     <string name="login_button">Masuk</string>
     <string name="register_button">Buat Akun</string>
     <string name="next">Selanjutnya</string>
+    <string name="checkbox_1">Saya telah memahami dan kondisi saya saat ini telah sesuai dengan kriteria atau persyaratan yang berlaku</string>
+    <string name="checkbox_2">Saya menyetujui beberapa identitas dapat dilihat oleh pengguna lain untuk keperluan komunikasi</string>
     <string-array name="gol_darah_array">
         <item>Pilih Golongan Darah</item>
         <item>A</item>

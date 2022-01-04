@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/activity_horizontal_margin"
+    tools:context=".activities.CreateListingActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_extrabold"
+            android:layout_marginTop="32dp"
+            android:textSize="32sp"
+            android:textColor="@color/red_main"
+            android:text="Syarat menjadi pendonor" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:fontFamily="@font/open_sans"
+            android:text="Sebelum kamu mendonor, terdapat beberapa hal yang perlu kamu perhatikan"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width = "match_parent"
+            android:layout_height = "wrap_content"
+            android:layout_marginTop="28dp"
+            android:padding="14dp"
+            android:elevation="2dp"
+            android:background = "@drawable/text_style">
+
+            <TextView
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:fontFamily="@font/open_sans"
+                android:text = "Berusia 18-60 tahun serta memiliki berat badan lebih dari 55 Kg"
+                android:textSize = "16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width = "match_parent"
+            android:layout_height = "wrap_content"
+            android:layout_marginTop="18dp"
+            android:padding="14dp"
+            android:elevation="2dp"
+            android:background = "@drawable/text_style">
+
+            <TextView
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:fontFamily="@font/open_sans"
+                android:text = "Diutamakan pria, apabila perempuan belum pernah hamil"
+                android:textSize = "16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width = "match_parent"
+            android:layout_height = "wrap_content"
+            android:layout_marginTop="18dp"
+            android:padding="14dp"
+            android:elevation="2dp"
+            android:background = "@drawable/text_style">
+
+            <TextView
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:fontFamily="@font/open_sans"
+                android:text = "Pernah terkonfirmasi COVID-19 dan memiliki surat keterangan telah sembuh"
+                android:textSize = "16sp" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/login_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="54dp"
+            android:background="@drawable/rounded_corner"
+            android:fontFamily="@font/raleway_bold"
+            android:text="Dimengerti"
+            android:textColor="@color/white"
+            android:clickable="true"/>
+
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,13 +12,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.plasion.R;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.Objects;
 
 public class HomeActivity extends AppCompatActivity {
 
     private TextView displayName;
     private FloatingActionButton logoutButton;
+    private MaterialCardView findDonorButton, createDonorButton, checkDonorButton, myDonorButton;
     private String userDisplayName;
     private String userFirstName;
 
@@ -29,16 +33,30 @@ public class HomeActivity extends AppCompatActivity {
         }
     };
 
+    private final View.OnClickListener createClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            goToCreateActivity();
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.custom_action_bar);
+
+        findDonorButton = (MaterialCardView) findViewById(R.id.cari_pendonor);
+        createDonorButton = (MaterialCardView) findViewById(R.id.berdonor);
+        checkDonorButton = (MaterialCardView) findViewById(R.id.cek_stok);
+        myDonorButton = (MaterialCardView) findViewById(R.id.my_donor);
 
         logoutButton =  (FloatingActionButton) findViewById(R.id.logout_button);
         logoutButton.bringToFront();
+
         logoutButton.setOnClickListener(logoutClickListener);
+        createDonorButton.setOnClickListener(createClickListener);
     }
 
     @Override
@@ -52,6 +70,11 @@ public class HomeActivity extends AppCompatActivity {
         displayName = (TextView) findViewById(R.id.display_name);
         displayName.setText(userFirstName);
 
+    }
+
+    private void goToCreateActivity() {
+        Intent intent = new Intent(HomeActivity.this, CreateListingActivity.class);
+        startActivity(intent);
     }
 
     private void logoutButtonClicked() {
