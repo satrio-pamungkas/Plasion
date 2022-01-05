@@ -92,7 +92,9 @@ public class FinalCreateListingActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(getApplicationContext(), userFullName, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Berhasil membuat", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                        startActivity(intent);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -117,7 +119,7 @@ public class FinalCreateListingActivity extends AppCompatActivity {
                 userFullName = attribute.child("userFullName").getValue(String.class);
                 userEmail = attribute.child("userEmail").getValue(String.class);
                 userPhone = attribute.child("userPhone").getValue(String.class);
-                userLocation = attribute.child("userAttribute").getValue(String.class);
+                userLocation = attribute.child("userLocation").getValue(String.class);
                 userBlood = attribute.child("userBlood").getValue(String.class);
             }
 

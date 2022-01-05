@@ -67,7 +67,6 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
                             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                            intent.putExtra("DISPLAY_NAME", user.getDisplayName());
                             Toast.makeText(LoginActivity.this, "Berhasil terotentikasi", Toast.LENGTH_SHORT).show();
                             startActivity(intent);
                         } else {

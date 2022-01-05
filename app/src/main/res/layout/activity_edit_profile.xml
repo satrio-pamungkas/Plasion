@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.EditProfileActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:orientation="vertical"
+        android:background="@color/red_main"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintVertical_weight="2">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:src="@drawable/avatar"
+            app:civ_border_color="#fff"
+            app:civ_border_width="3dp"
+            android:layout_marginTop="44dp"/>
+
+        <TextView
+            android:id="@+id/nama_depan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_extrabold"
+            android:layout_marginTop="24dp"
+            android:textSize="28sp"
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/sunting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans"
+            android:layout_marginTop="6dp"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            android:text="Sunting Profil" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/nama_lengkap_profil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:ems="10"
+                android:textSize="18sp"
+                android:fontFamily="@font/open_sans"
+                android:backgroundTint="@color/red_main"
+                android:hint="Nama Lengkap" />
+
+            <EditText
+                android:id="@+id/nomor_telepon_profil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:textSize="18sp"
+                android:fontFamily="@font/open_sans"
+                android:backgroundTint="@color/red_main"
+                android:hint="Nomor Telepon"
+                android:inputType="phone" />
+
+            <EditText
+                android:id="@+id/domisili_profil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:textSize="18sp"
+                android:fontFamily="@font/open_sans"
+                android:backgroundTint="@color/red_main"
+                android:hint="Domisili"
+                android:inputType="textPostalAddress" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/submit_update_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/rounded_corner"
+                android:fontFamily="@font/raleway_bold"
+                android:text="Simpan"
+                android:textColor="@color/white"
+                android:clickable="true"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>
