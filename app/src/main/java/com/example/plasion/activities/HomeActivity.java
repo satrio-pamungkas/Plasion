@@ -22,7 +22,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private TextView displayName;
     private FloatingActionButton logoutButton;
-    private MaterialCardView findDonorButton, createDonorButton, checkDonorButton, myDonorButton;
+    private MaterialCardView findDonorButton, createDonorButton, profilButton, myDonorButton;
     private String userDisplayName;
     private String userFirstName;
 
@@ -49,7 +49,7 @@ public class HomeActivity extends AppCompatActivity {
 
         findDonorButton = (MaterialCardView) findViewById(R.id.cari_pendonor);
         createDonorButton = (MaterialCardView) findViewById(R.id.berdonor);
-        checkDonorButton = (MaterialCardView) findViewById(R.id.cek_stok);
+        profilButton = (MaterialCardView) findViewById(R.id.profil);
         myDonorButton = (MaterialCardView) findViewById(R.id.my_donor);
 
         logoutButton =  (FloatingActionButton) findViewById(R.id.logout_button);

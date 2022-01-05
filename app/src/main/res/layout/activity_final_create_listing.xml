@@ -31,6 +31,7 @@
             android:src="@drawable/illustration_confirmation" />
 
         <CheckBox
+            android:id="@+id/syarat_pertama"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/open_sans"
@@ -39,6 +40,7 @@
             android:text="@string/checkbox_1"/>
 
         <CheckBox
+            android:id="@+id/syarat_kedua"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/open_sans"
@@ -47,7 +49,7 @@
             android:text="@string/checkbox_2"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/login_button"
+            android:id="@+id/create_listing"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="54dp"
@@ -55,7 +57,7 @@
             android:fontFamily="@font/raleway_bold"
             android:text="Buat Listing"
             android:textColor="@color/white"
-            android:clickable="true"/>
+            android:focusable="true"/>
 
 
     </LinearLayout>
