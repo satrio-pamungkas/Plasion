@@ -65,7 +65,7 @@ public class FindDonorActivity extends AppCompatActivity {
                     Listing list = postSnapshot.getValue(Listing.class);
                     listingArrayList.add(list);
                 }
-                ListingAdapter listingAdapter = new ListingAdapter(listingArrayList);
+                ListingAdapter listingAdapter = new ListingAdapter(FindDonorActivity.this, listingArrayList);
 
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(FindDonorActivity.this);
                 recyclerView.setLayoutManager(layoutManager);

@@ -26,7 +26,7 @@
             android:layout_marginBottom="32dp"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:textSize="32sp"
+            android:textSize="28sp"
             android:textColor="@color/red_main"
             android:text="Pilih pendonor yang tersedia" />
 
