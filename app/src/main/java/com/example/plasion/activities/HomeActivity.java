@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +12,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.plasion.R;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -25,7 +23,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.Objects;
 
 public class HomeActivity extends AppCompatActivity {
@@ -81,6 +78,13 @@ public class HomeActivity extends AppCompatActivity {
         }
     };
 
+    private final View.OnClickListener findClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            goToFindActivity();
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,6 +104,7 @@ public class HomeActivity extends AppCompatActivity {
         createDonorButton.setOnClickListener(createClickListener);
         profilButton.setOnClickListener(profileClickListener);
         myDonorButton.setOnClickListener(myDonorClickListener);
+        findDonorButton.setOnClickListener(findClickListener);
     }
 
     @Override
@@ -117,6 +122,11 @@ public class HomeActivity extends AppCompatActivity {
     private String getUserInformation() {
         user = FirebaseAuth.getInstance().getCurrentUser();
         return user.getDisplayName();
+    }
+
+    private void goToFindActivity() {
+        Intent intent = new Intent(HomeActivity.this, FindDonorActivity.class);
+        startActivity(intent);
     }
 
     private void goToMyDonorActivity() {
