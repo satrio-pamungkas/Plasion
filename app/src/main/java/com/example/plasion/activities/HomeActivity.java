@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -22,6 +23,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Objects;
@@ -31,10 +33,10 @@ public class HomeActivity extends AppCompatActivity {
     private TextView displayName;
     private FloatingActionButton logoutButton;
     private MaterialCardView findDonorButton, createDonorButton, profilButton, myDonorButton;
-    private String userDisplayName;
     private String userFirstName;
     private String userId, userFullName, userPhone, userLocation;
     private String DATABASE_URL;
+    private int count;
 
     DatabaseReference userAttribute;
     FirebaseUser user;
@@ -49,7 +51,26 @@ public class HomeActivity extends AppCompatActivity {
     private final View.OnClickListener createClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            if (count > 0) {
+                Toast.makeText(getApplicationContext(),
+                        "Tidak dapat membuat listing baru, kamu sudah memiliki listing yang aktif",
+                        Toast.LENGTH_SHORT).show();
+                return;
+            }
             goToCreateActivity();
+        }
+    };
+
+    private final View.OnClickListener myDonorClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (count == 0) {
+                Toast.makeText(getApplicationContext(),
+                        "Tidak ada listing aktif, silakan buat listing",
+                        Toast.LENGTH_SHORT).show();
+                return;
+            }
+            goToMyDonorActivity();
         }
     };
 
@@ -78,6 +99,7 @@ public class HomeActivity extends AppCompatActivity {
         logoutButton.setOnClickListener(logoutClickListener);
         createDonorButton.setOnClickListener(createClickListener);
         profilButton.setOnClickListener(profileClickListener);
+        myDonorButton.setOnClickListener(myDonorClickListener);
     }
 
     @Override
@@ -86,6 +108,7 @@ public class HomeActivity extends AppCompatActivity {
 
         userFirstName = getUserInformation().replaceAll(" .*","");
         getAllUserInformation();
+        getCountData();
         displayName = (TextView) findViewById(R.id.display_name);
         displayName.setText(userFirstName);
 
@@ -94,6 +117,11 @@ public class HomeActivity extends AppCompatActivity {
     private String getUserInformation() {
         user = FirebaseAuth.getInstance().getCurrentUser();
         return user.getDisplayName();
+    }
+
+    private void goToMyDonorActivity() {
+        Intent intent = new Intent(HomeActivity.this, MyDonorActivity.class);
+        startActivity(intent);
     }
 
     private void goToCreateActivity() {
@@ -139,6 +167,28 @@ public class HomeActivity extends AppCompatActivity {
         alert.show();
     }
 
+    private void getCountData() {
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        userId = user.getUid();
+        DATABASE_URL = getResources().getString(R.string.database_url);
+        userAttribute = FirebaseDatabase.getInstance(DATABASE_URL)
+                .getReference("listings")
+                .child(userId);
+
+        userAttribute.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                count = (int) snapshot.getChildrenCount();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
+
     private void getAllUserInformation() {
         user = FirebaseAuth.getInstance().getCurrentUser();
         userId = user.getUid();
@@ -161,4 +211,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }

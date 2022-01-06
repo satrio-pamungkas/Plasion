@@ -37,7 +37,6 @@
             android:layout_height = "wrap_content"
             android:layout_marginTop="28dp"
             android:padding="14dp"
-            android:elevation="2dp"
             android:background = "@drawable/text_style">
 
             <TextView
@@ -54,7 +53,6 @@
             android:layout_height = "wrap_content"
             android:layout_marginTop="18dp"
             android:padding="14dp"
-            android:elevation="2dp"
             android:background = "@drawable/text_style">
 
             <TextView
@@ -71,7 +69,6 @@
             android:layout_height = "wrap_content"
             android:layout_marginTop="18dp"
             android:padding="14dp"
-            android:elevation="2dp"
             android:background = "@drawable/text_style">
 
             <TextView

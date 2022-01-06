@@ -37,6 +37,7 @@
             android:fontFamily="@font/open_sans"
             android:textSize="12sp"
             android:checked="false"
+            android:buttonTint="@color/red_main"
             android:text="@string/checkbox_1"/>
 
         <CheckBox
@@ -46,6 +47,7 @@
             android:fontFamily="@font/open_sans"
             android:textSize="12sp"
             android:checked="false"
+            android:buttonTint="@color/red_main"
             android:text="@string/checkbox_2"/>
 
         <androidx.appcompat.widget.AppCompatButton
